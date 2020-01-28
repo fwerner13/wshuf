@@ -24,11 +24,31 @@
       <FormatVersion Value="2"/>
       <Modes Count="0"/>
     </RunParams>
-    <Units Count="1">
+    <Units Count="5">
       <Unit0>
         <Filename Value="wshuf.lpr"/>
         <IsPartOfProject Value="True"/>
       </Unit0>
+      <Unit1>
+        <Filename Value="umarsaglia.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="uMarsaglia"/>
+      </Unit1>
+      <Unit2>
+        <Filename Value="betterrandomize.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="Unit1"/>
+      </Unit2>
+      <Unit3>
+        <Filename Value="unixrandom.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="UnixRandom"/>
+      </Unit3>
+      <Unit4>
+        <Filename Value="weightedrandom.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="WeightedRandom"/>
+      </Unit4>
     </Units>
   </ProjectOptions>
   <CompilerOptions>
@@ -40,6 +60,11 @@
       <IncludeFiles Value="$(ProjOutDir)"/>
       <UnitOutputDirectory Value="lib/$(TargetCPU)-$(TargetOS)"/>
     </SearchPaths>
+    <Other>
+      <Verbosity>
+        <ShoLineNum Value="True"/>
+      </Verbosity>
+    </Other>
   </CompilerOptions>
   <Debugging>
     <Exceptions Count="3">

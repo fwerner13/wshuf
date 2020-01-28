@@ -1,4 +1,5 @@
 wshuf
+textfile.txt
 
 # Lazarus compiler-generated binaries (safe to delete)
 *.exe
