@@ -104,6 +104,7 @@ type
     begin
       randomIndex := getWeightedRandomIndex(inputLines);
       outputLines.Add(inputLines[randomIndex]);
+      inputLines[randomIndex] := IntToStr(0);
     end;
 
     for i := 0 to outputLines.Count - 1 do
