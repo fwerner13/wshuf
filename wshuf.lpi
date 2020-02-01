@@ -24,31 +24,21 @@
       <FormatVersion Value="2"/>
       <Modes Count="0"/>
     </RunParams>
-    <Units Count="5">
+    <Units Count="3">
       <Unit0>
         <Filename Value="wshuf.lpr"/>
         <IsPartOfProject Value="True"/>
       </Unit0>
       <Unit1>
-        <Filename Value="umarsaglia.pas"/>
-        <IsPartOfProject Value="True"/>
-        <UnitName Value="uMarsaglia"/>
-      </Unit1>
-      <Unit2>
-        <Filename Value="betterrandomize.pas"/>
-        <IsPartOfProject Value="True"/>
-        <UnitName Value="Unit1"/>
-      </Unit2>
-      <Unit3>
         <Filename Value="unixrandom.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="UnixRandom"/>
-      </Unit3>
-      <Unit4>
+      </Unit1>
+      <Unit2>
         <Filename Value="weightedrandom.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="WeightedRandom"/>
-      </Unit4>
+      </Unit2>
     </Units>
   </ProjectOptions>
   <CompilerOptions>
