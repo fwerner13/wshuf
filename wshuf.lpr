@@ -139,6 +139,9 @@ type
 
 var
   Application: TWShuf;
+
+{$R *.res}
+
 begin
   Application := TWShuf.Create(nil);
   Application.Title := 'wshuf';
