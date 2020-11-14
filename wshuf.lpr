@@ -41,6 +41,7 @@ type
     inputFile: string;
     numLines: integer = 0;
     separator: Char = ';';
+    verbose: boolean = False;
 
   begin
     // check for file argument
@@ -52,7 +53,7 @@ type
     end;
 
     // quick check parameters
-    ErrorMsg := CheckOptions('hns:', 'help lines separator:');
+    ErrorMsg := CheckOptions('hnsv:', 'help lines separator verbose:');
     if ErrorMsg <> '' then
     begin
       ShowException(Exception.Create(ErrorMsg));
@@ -79,6 +80,11 @@ type
     if HasOption('s', 'separator') then
     begin
       separator := GetOptionValue('s', 'separator')[1];
+    end;
+
+    if HasOption('v', 'verbose') then
+    begin
+      verbose := True;
     end;
 
     randomize();
@@ -116,7 +122,14 @@ type
 
     for i := 0 to outputLines.Count - 1 do
     begin
-      writeln(outputLines.Names[i]);
+      if (False = verbose) then
+      begin
+           writeln(outputLines.Names[i]);
+      end
+      else
+      begin
+          writeln(outputLines[i]);
+      end;
     end;
 
     inputLines.Free;

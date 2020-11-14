@@ -24,6 +24,10 @@ output at most COUNT lines
 
 use *CHAR* to separate values and weights. Defaults to semicolon.
 
+**-v**, **--verbose**
+
+Display the lines including the weight values.
+
 [TBD] **--help**
 
 display this help and exit
