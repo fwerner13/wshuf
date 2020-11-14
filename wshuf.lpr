@@ -116,8 +116,12 @@ type
     for i := 0 to numLines - 1 do
     begin
       randomIndex := getWeightedRandomIndex(inputLines);
-      outputLines.Add(inputLines[randomIndex]);
-      inputLines[randomIndex] := IntToStr(0);
+      writeln(inputLines.ValueFromIndex[randomIndex]);
+      if ('0' <> inputLines.ValueFromIndex[randomIndex]) then
+      begin
+         outputLines.Add(inputLines[randomIndex]);
+         inputLines[randomIndex] := IntToStr(0);
+      end;
     end;
 
     for i := 0 to outputLines.Count - 1 do
