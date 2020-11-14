@@ -1,6 +1,6 @@
 # Changelog
 
-## 0.2.0 - under development
+## 0.2.0 - 2020-11-14
 
 * [ENH] add separator option
 * [CHG] weight values are not printed by default anymore
