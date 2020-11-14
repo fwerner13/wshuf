@@ -40,6 +40,7 @@ type
     randomIndex: integer;
     inputFile: string;
     numLines: integer = 0;
+    separator: Char = ';';
 
   begin
     // check for file argument
@@ -51,7 +52,7 @@ type
     end;
 
     // quick check parameters
-    ErrorMsg := CheckOptions('hn:', 'help lines:');
+    ErrorMsg := CheckOptions('hns:', 'help lines separator:');
     if ErrorMsg <> '' then
     begin
       ShowException(Exception.Create(ErrorMsg));
@@ -75,11 +76,17 @@ type
       numLines := StrToInt(GetOptionValue('n', 'lines'));
     end;
 
+    if HasOption('s', 'separator') then
+    begin
+      separator := GetOptionValue('s', 'separator')[1];
+    end;
+
     randomize();
 
     // load the file into the stringlist
     inputLines := TStringList.Create;
-    inputLines.NameValueSeparator := ';';
+    inputLines.NameValueSeparator := separator;
+
     try
       inputLines.LoadFromFile(inputFile);
     except
@@ -88,7 +95,7 @@ type
     end;
 
     outputLines := TStringList.Create;
-
+    outputLines.NameValueSeparator := separator;
 
     // should we limit the output to numLines or use the whole input file?
     if (numLines = 0) or (numLines > inputLines.Count) then
@@ -109,7 +116,7 @@ type
 
     for i := 0 to outputLines.Count - 1 do
     begin
-      writeln(outputLines[i]);
+      writeln(outputLines.Names[i]);
     end;
 
     inputLines.Free;

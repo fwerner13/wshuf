@@ -16,11 +16,11 @@ The input lines must follow the format
 
 
 
-[TBD] **-n**, **--head-count**=*COUNT*
+**-n**, **--lines**=*COUNT*
 
 output at most COUNT lines
 
-[TBD] **-s, --seperator**=*CHAR*
+**-s, --separator**=*CHAR*
 
 use *CHAR* to separate values and weights. Defaults to semicolon.
 
