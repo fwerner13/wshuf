@@ -116,7 +116,6 @@ type
     for i := 0 to numLines - 1 do
     begin
       randomIndex := getWeightedRandomIndex(inputLines);
-      writeln(inputLines.ValueFromIndex[randomIndex]);
       if ('0' <> inputLines.ValueFromIndex[randomIndex]) then
       begin
          outputLines.Add(inputLines[randomIndex]);
