@@ -20,6 +20,9 @@ begin
   // calculate total weight values
   for i := 0 to items.Count - 1 do
   begin
+    if ('' = items.ValueFromIndex[i]) then
+       Continue;
+
     totalValues := totalValues + StrToInt(items.ValueFromIndex[i]);
   end;
 
@@ -27,6 +30,8 @@ begin
 
   for i := 0 to items.Count - 1 do
   begin
+    if ('' = items.ValueFromIndex[i]) then
+       Continue;
 
     tmpRand := tmpRand - StrToInt(items.ValueFromIndex[i]);
     if tmpRand < 0 then

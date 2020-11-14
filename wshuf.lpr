@@ -40,6 +40,8 @@ type
     randomIndex: integer;
     inputFile: string;
     numLines: integer = 0;
+    separator: Char = ';';
+    verbose: boolean = False;
 
   begin
     // check for file argument
@@ -51,7 +53,7 @@ type
     end;
 
     // quick check parameters
-    ErrorMsg := CheckOptions('hn:', 'help lines:');
+    ErrorMsg := CheckOptions('hnsv:', 'help lines separator verbose:');
     if ErrorMsg <> '' then
     begin
       ShowException(Exception.Create(ErrorMsg));
@@ -75,11 +77,22 @@ type
       numLines := StrToInt(GetOptionValue('n', 'lines'));
     end;
 
+    if HasOption('s', 'separator') then
+    begin
+      separator := GetOptionValue('s', 'separator')[1];
+    end;
+
+    if HasOption('v', 'verbose') then
+    begin
+      verbose := True;
+    end;
+
     randomize();
 
     // load the file into the stringlist
     inputLines := TStringList.Create;
-    inputLines.NameValueSeparator := ';';
+    inputLines.NameValueSeparator := separator;
+
     try
       inputLines.LoadFromFile(inputFile);
     except
@@ -88,7 +101,7 @@ type
     end;
 
     outputLines := TStringList.Create;
-
+    outputLines.NameValueSeparator := separator;
 
     // should we limit the output to numLines or use the whole input file?
     if (numLines = 0) or (numLines > inputLines.Count) then
@@ -103,13 +116,24 @@ type
     for i := 0 to numLines - 1 do
     begin
       randomIndex := getWeightedRandomIndex(inputLines);
-      outputLines.Add(inputLines[randomIndex]);
-      inputLines[randomIndex] := IntToStr(0);
+      writeln(inputLines.ValueFromIndex[randomIndex]);
+      if ('0' <> inputLines.ValueFromIndex[randomIndex]) then
+      begin
+         outputLines.Add(inputLines[randomIndex]);
+         inputLines[randomIndex] := IntToStr(0);
+      end;
     end;
 
     for i := 0 to outputLines.Count - 1 do
     begin
-      writeln(outputLines[i]);
+      if (False = verbose) then
+      begin
+           writeln(outputLines.Names[i]);
+      end
+      else
+      begin
+          writeln(outputLines[i]);
+      end;
     end;
 
     inputLines.Free;
@@ -139,6 +163,9 @@ type
 
 var
   Application: TWShuf;
+
+{$R *.res}
+
 begin
   Application := TWShuf.Create(nil);
   Application.Title := 'wshuf';
